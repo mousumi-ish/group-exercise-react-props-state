@@ -11,7 +11,7 @@ function App() {
   );
   const [whalesSaved, setWhalesSaved] = useState<number>(700);
   const [roundHouseKicks, setRoundHouseKicks] = useState<number>(300000);
-
+  const [filteredJokes, setFilteredJokes] = useState<number>(3);
   const [jokes, setJokes] = useState<Array<Joke>>([
     {
       id: 1,
@@ -43,6 +43,15 @@ function App() {
       {jokes.map((item, index) => (
         <ChuckJoke key={`joke-${index}`} id={item.id} joke={item.joke} />
       ))}
+      <h2>Filterd Jokes: </h2>
+      {jokes.map((item, index) => {
+        console.log(item.id);
+        if (item.id === filteredJokes) {
+          return (
+            <ChuckJoke key={`joke-${index}`} id={item.id} joke={item.joke} />
+          );
+        }
+      })}
     </div>
   );
 }
